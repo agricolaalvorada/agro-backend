@@ -3,7 +3,10 @@ package br.com.agro.msagro.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.agro.msagro.dto.ParceiroDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.agro.msagro.dto.TagDTO;
@@ -17,11 +20,8 @@ public class TagService {
 	private @Autowired TagRepository tagRepository;
 	private @Autowired AutomacaoClientWS automacaoClientWS;
 	
-	public Iterable<TagDTO> findAll() {
-		Iterable<Tag> list = tagRepository.findAll();
-		List<TagDTO> listDTO = new ArrayList<>();
-		list.iterator().forEachRemaining(t -> listDTO.add(t.toDTO()));
-		return listDTO;
+	public Page<TagDTO> findAll(Pageable page) {
+		return tagRepository.findAll(page).map(Tag::toDTO);
 	}
 	public TagDTO save(TagDTO tagDTO) {
 		//salvar a tag

@@ -19,7 +19,6 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tb_tag")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class Tag extends EntidadeAmbiente {
 
 	private static final long serialVersionUID = -3351987708785118658L;
