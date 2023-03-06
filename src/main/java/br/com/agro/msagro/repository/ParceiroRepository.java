@@ -11,9 +11,6 @@ import org.springframework.stereotype.Repository;
 import br.com.agro.msagro.entity.Parceiro;
 
 @Repository
-public interface ParceiroRepository extends PagingAndSortingRepository<Parceiro, Long> {
+public interface ParceiroRepository extends PagingAndSortingRepository<Parceiro, Long>, ParceiroCustomRepository {
 
-    Page<Parceiro> findAllByNomeContainingOrFazendaContainingOrInscricaoEstadualContainingOrCodigoContainingOrTipoPessoaEquals(Pageable page, String nome, String fazenda, String inscricaoEstadual, String codigo, String tipoPessoa);
-
-	
 }

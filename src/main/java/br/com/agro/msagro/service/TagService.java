@@ -1,18 +1,16 @@
 package br.com.agro.msagro.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.agro.msagro.dto.ParceiroDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
 import br.com.agro.msagro.dto.TagDTO;
 import br.com.agro.msagro.entity.Tag;
 import br.com.agro.msagro.feignclient.AutomacaoClientWS;
+import br.com.agro.msagro.filter.FilterConsulta;
 import br.com.agro.msagro.repository.TagRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TagService {
@@ -20,8 +18,12 @@ public class TagService {
 	private @Autowired TagRepository tagRepository;
 	private @Autowired AutomacaoClientWS automacaoClientWS;
 	
-	public Page<TagDTO> findAll(Pageable page) {
-		return tagRepository.findAll(page).map(Tag::toDTO);
+	public FilterConsulta consultaPaginada(FilterConsulta filterConsulta) {
+		tagRepository.consultarTagsPaginada(filterConsulta);
+		List<Tag> lstTag = (List<Tag>) new ArrayList<>(filterConsulta.getData());
+		List<TagDTO> lstDTO = lstTag.stream().map(Tag::toDTO).collect(Collectors.toList());
+		filterConsulta.setData(lstDTO);
+		return filterConsulta;
 	}
 	public TagDTO save(TagDTO tagDTO) {
 		//salvar a tag
