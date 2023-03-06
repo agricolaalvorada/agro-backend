@@ -4,6 +4,6 @@ import br.com.agro.msagro.filter.FilterConsulta;
 
 public interface ParceiroCustomRepository {
 
-    FilterConsulta consultarTagsPaginada(FilterConsulta filterConsulta);
+    FilterConsulta consultarParceiroPaginada(FilterConsulta filterConsulta);
 
 }

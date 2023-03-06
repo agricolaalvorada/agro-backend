@@ -240,20 +240,20 @@ public class Parceiro extends EntidadeAmbiente {
 	private boolean preCadastro;
 
 	
-	public String getRecebedorParceiro() {
-		String codigo = this.getCodigo();
-		String nomeParceiro = this.getNome();
-		String telefone = UtilString.isNotEmptyNull(this.getTelefone()) ? this.getTelefone() : UtilString.empty();
-		String cnpj = UtilString.isNotEmptyNull(this.cnpj) ? this.cnpj : UtilString.empty();
-		String cidade = UtilObjeto.isNotNull(this.getCidade()) ? this.getCidade().getCidadeFormatada()
-				: UtilString.empty();
-		String endereco = UtilString.isNotEmptyNull(this.getLogradouro()) ? ", " + this.getLogradouro()
-				: UtilString.empty();
-		String numero = UtilString.isNotEmptyNull(this.getNumero()) ? ", " + this.getNumero() : ", S/N";
-		return codigo.concat(" - ").concat(nomeParceiro) + "\n"
-				+ "Filial ".concat(codigo).concat(" - ").concat(telefone).concat(" CNPJ: ").concat(cnpj) + "\n"
-				+ cidade.concat(endereco).concat(numero);
-	}
+//	public String getRecebedorParceiro() {
+//		String codigo = this.getCodigo();
+//		String nomeParceiro = this.getNome();
+//		String telefone = UtilString.isNotEmptyNull(this.getTelefone()) ? this.getTelefone() : UtilString.empty();
+//		String cnpj = UtilString.isNotEmptyNull(this.cnpj) ? this.cnpj : UtilString.empty();
+//		String cidade = UtilObjeto.isNotNull(this.getCidade()) ? this.getCidade().getCidadeFormatada()
+//				: UtilString.empty();
+//		String endereco = UtilString.isNotEmptyNull(this.getLogradouro()) ? ", " + this.getLogradouro()
+//				: UtilString.empty();
+//		String numero = UtilString.isNotEmptyNull(this.getNumero()) ? ", " + this.getNumero() : ", S/N";
+//		return codigo.concat(" - ").concat(nomeParceiro) + "\n"
+//				+ "Filial ".concat(codigo).concat(" - ").concat(telefone).concat(" CNPJ: ").concat(cnpj) + "\n"
+//				+ cidade.concat(endereco).concat(numero);
+//	}
 
 	@Override
 	public String toString() {

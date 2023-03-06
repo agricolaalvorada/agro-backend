@@ -18,7 +18,7 @@ public class ParceiroService {
 	private @Autowired ParceiroRepository parceiroRepository;
 	
 	public FilterConsulta findAll(FilterConsulta filterConsulta) {
-		parceiroRepository.consultarTagsPaginada(filterConsulta);
+		parceiroRepository.consultarParceiroPaginada(filterConsulta);
 		List<Parceiro> lstTag = (List<Parceiro>) new ArrayList<>(filterConsulta.getData());
 		List<ParceiroDTO> lstDTO = lstTag.stream().map(Parceiro::toDTO).collect(Collectors.toList());
 		filterConsulta.setData(lstDTO);
