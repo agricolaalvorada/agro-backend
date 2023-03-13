@@ -1,7 +1,5 @@
 package br.com.agro.msagro.repository;
 
-import br.com.agro.msagro.entity.Entidade;
-import br.com.agro.msagro.entity.Tag;
 import br.com.agro.msagro.util.UtilObjeto;
 import br.com.agro.msagro.util.UtilString;
 import org.apache.commons.lang3.StringUtils;

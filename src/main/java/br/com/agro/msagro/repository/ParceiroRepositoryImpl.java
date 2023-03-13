@@ -11,7 +11,7 @@ import java.util.List;
 public class ParceiroRepositoryImpl extends RepositoryUtils implements ParceiroCustomRepository {
     @Override
     public FilterConsulta consultarParceiroPaginada(FilterConsulta filterConsulta) {
-        int first = (filterConsulta.getPagina() > 1 ? (filterConsulta.getPagina() * filterConsulta.getRowsPorPagina()) : 0);
+        int first = (filterConsulta.getPagina() == 1 ? 0 : ((filterConsulta.getPagina() - 1) * filterConsulta.getRowsPorPagina()));
         CriteriaQuery<Parceiro> query = entityManager.getCriteriaBuilder().createQuery(Parceiro.class);
         Root<Parceiro> rootEntidade = query.from(Parceiro.class);
         List<Predicate> condicoes = aplicarFiltro(rootEntidade, filterConsulta.getFiltros());

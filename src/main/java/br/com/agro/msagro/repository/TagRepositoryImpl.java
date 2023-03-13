@@ -14,7 +14,7 @@ public class TagRepositoryImpl extends RepositoryUtils implements TagCustomRepos
 
     @Override
     public FilterConsulta consultarTagsPaginada(FilterConsulta filterConsulta) {
-        int first = (filterConsulta.getPagina() > 1 ? (filterConsulta.getPagina() * filterConsulta.getRowsPorPagina()) : 0);
+        int first = (filterConsulta.getPagina() == 1 ? 0 : ((filterConsulta.getPagina() - 1) * filterConsulta.getRowsPorPagina()));
         CriteriaQuery<Tag> query = entityManager.getCriteriaBuilder().createQuery(Tag.class);
         Root<Tag> rootEntidade = query.from(Tag.class);
         List<Predicate> condicoes = aplicarFiltro(rootEntidade, filterConsulta.getFiltros());
